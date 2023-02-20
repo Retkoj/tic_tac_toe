@@ -2,9 +2,10 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from tic_tac_toe.logic.exceptions import InvalidGameState
+from tic_tac_toe.logic.exceptions import InvalidGameState, InvalidPlayers
 
 if TYPE_CHECKING:
+    from tic_tac_toe.game.players import Player
     from tic_tac_toe.logic.models import Grid, GameState, Mark
 
 import re
@@ -46,3 +47,8 @@ def validate_game_state(game_state: GameState) -> None:
     validate_number_of_marks(game_state.grid)
     validate_starting_mark(game_state.grid, game_state.starting_mark)
     validate_winner(game_state.grid, game_state.starting_mark, game_state.winner)
+
+
+def validate_players(player_one: Player, player_two: Player) -> None:
+    if player_one.mark is player_two.mark:
+        raise InvalidPlayers

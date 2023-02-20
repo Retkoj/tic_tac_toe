@@ -6,3 +6,7 @@ class InvalidGameState(Exception):
 
 class InvalidMove(Exception):
     """Raised when an invalid move is made"""
+
+
+class InvalidPlayers(Exception):
+    """Raised when the players have invalid marks"""
