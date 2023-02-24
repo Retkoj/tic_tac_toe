@@ -12,7 +12,7 @@ import re
 
 
 def validate_grid(grid: Grid) -> None:
-    if not re.match(r"^[\sXO]$", grid.cells):
+    if not re.match(r"^[\sXO]{9}$", grid.cells):
         raise ValueError("Grid must consist of 9 cells, containing either a 'X', 'O' or space. "
                          "For example: 'XO  OXO X'")
 
@@ -31,16 +31,20 @@ def validate_starting_mark(grid: Grid, starting_mark: Mark) -> None:
 
 
 def validate_winner(grid: Grid, starting_mark: Mark, winner: Mark | None) -> None:
-    if winner == starting_mark:
-        if winner == 'X':
+    if winner == "X":
+        if starting_mark == 'X':
             if grid.x_count <= grid.o_count:
                 raise InvalidGameState("Wrong number of X's and O's: invalid winning state.")
-        elif winner == 'O':
+        else:
+            if grid.x_count != grid.o_count:
+                raise InvalidGameState("Wrong number of X's and O's: invalid winning state.")
+    elif winner == "O":
+        if starting_mark == "O":
             if grid.o_count <= grid.x_count:
                 raise InvalidGameState("Wrong number of X's and O's: invalid winning state.")
-    elif winner != starting_mark:
-        if grid.x_count != grid.o_count:
-            raise InvalidGameState("Wrong number of X's and O's: invalid winning state.")
+        else:
+            if grid.x_count != grid.o_count:
+                raise InvalidGameState("Wrong number of X's and O's: invalid winning state.")
 
 
 def validate_game_state(game_state: GameState) -> None:
