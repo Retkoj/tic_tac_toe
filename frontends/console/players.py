@@ -16,7 +16,7 @@ class ConsolePlayer(Player):
                 try:
                     return game_state.make_move_to(index)
                 except InvalidMove:
-                    print(f"Cell '{index}' is already occupied.")
+                    print(f"Cell is already occupied, pick an empty cell.")
         return None
 
 
