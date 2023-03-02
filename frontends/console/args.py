@@ -1,18 +1,22 @@
 import argparse
 
-from tic_tac_toe.game.players import Player, RandomComputerPlayer
+from tic_tac_toe.game.players import Player, RandomComputerPlayer, MinimaxComputerPlayer
 from tic_tac_toe.logic.models import Mark
 
 from .players import ConsolePlayer
 
 PLAYER_CLASSES = {
     "human": ConsolePlayer,
-    "random": RandomComputerPlayer
+    "random": RandomComputerPlayer,
+    "minimax": MinimaxComputerPlayer
 }
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(prog="Tic Tac Toe")
+    parser = argparse.ArgumentParser(prog="Tic Tac Toe", description="Tic Tac Toe game where where players can be set "
+                                                                     "to 'human', 'random' (i.e. computer making random"
+                                                                     " moves), or 'minimax' (i.e. computer making "
+                                                                     "moves based on the minimax algorithm)")
     parser.add_argument("-X", help=f"Pick the player type for the X mark from the following: "
                                    f"{list(PLAYER_CLASSES.keys())}",
                         dest="player_x", choices=PLAYER_CLASSES.keys(), default="human")

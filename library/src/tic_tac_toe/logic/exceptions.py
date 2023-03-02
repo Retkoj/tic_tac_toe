@@ -10,3 +10,6 @@ class InvalidMove(Exception):
 
 class InvalidPlayers(Exception):
     """Raised when the players have invalid marks"""
+
+class UnknownGameScore(Exception):
+    """Raised when the game has no outcome yet"""
