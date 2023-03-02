@@ -27,6 +27,6 @@ In Windows:
 - Activate the Python environment
 - run `python -m console --help` to see all options
 - run `python -m console -X human -O minimax --starting X` to play against the computer
-- Pass moves by combining the row-letter and column-digit, such as `A1` or `B3`
+- Pass moves by combining the row-digit and column-letter, such as `A1` or `B3`
 
 ![gui.png](gui.png) 
